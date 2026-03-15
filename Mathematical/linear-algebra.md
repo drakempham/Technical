@@ -79,6 +79,7 @@ This is the standard "straight-line" length of a vector.
 
 ### $L^\infty$ Norm (Max Norm)
 
+
 $$\|\mathbf{v}\|_\infty = \max_i |v_i|$$
 
 ### Norm Properties
