@@ -1,3 +1,5 @@
+# math + sorting
+
 # x = ...a b c 1 0 0 0    (bit thấp nhất là vị trí có giá trị 1 đầu tiên từ phải)
 # -x = ...ā b̄ c̄ 1 0 0 0    (các bit bên trái bị đảo, bit thấp nhất và các số 0 bên phải giữ nguyên)
 # x & -x = 0 0 0 1 0 0 0    (chỉ còn bit thấp nhất)
