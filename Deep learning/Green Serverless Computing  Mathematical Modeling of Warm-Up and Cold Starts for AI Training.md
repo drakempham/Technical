@@ -61,7 +61,7 @@ $$
 E_{\text{total}} = E_{\text{work}} + E_{\text{overhead}} \quad (1)
 $$
 
-where $E_{\text{work}}$ is the energy for useful computation, and $E_{\text{overhead}}$ aggregates energy from cold starts, container lifecycle operations, and idle intervals.
+where `E_work` is the energy for useful computation, and `E_overhead` aggregates energy from cold starts, container lifecycle operations, and idle intervals.
 
 If a task requires $F$ floating-point operations (FLOPs) on hardware with energy efficiency $\eta$ (FLOPs per joule), the ideal work energy is:
 
@@ -69,7 +69,7 @@ $$
 E_{\text{work}} = \frac{F}{\eta} \quad (2)
 $$
 
-For modern AI accelerators, $\eta$ is several orders of magnitude higher than CPUs, so the primary challenge becomes keeping $E_{\text{overhead}}$ small relative to $E_{\text{work}}$ — especially for short-running, fine-grained functions where the init cost dominates.
+For modern AI accelerators, $\eta$ is several orders of magnitude higher than CPUs, so the primary challenge becomes keeping `E_overhead` small relative to `E_work` — especially for short-running, fine-grained functions where the init cost dominates.
 
 ---
 
@@ -97,27 +97,27 @@ $$
 
 ### Relative cold-start overhead
 
-Let $\bar{E}_{\text{work}}$ be the average work energy per invocation. The **relative overhead** is:
+Let `Ē_work` be the average work energy per invocation. The **relative overhead** is:
 
 $$
 \rho_{\text{cs}} = \frac{E_{\text{cs,total}}}{N \cdot \bar{E}_{\text{work}}} = f \cdot \frac{E_{\text{cs}}}{\bar{E}_{\text{work}}} \quad (5)
 $$
 
-**Key insight:** For short or lightweight functions (small $\bar{E}_{\text{work}}$), $\rho_{\text{cs}}$ becomes large — cold-start energy dominates over useful work energy. This is the core problem with naive fine-grained serverless AI workloads.
+**Key insight:** For short or lightweight functions (small `Ē_work`), the overhead ratio `ρ_cs` becomes large — cold-start energy dominates over useful work energy. This is the core problem with naive fine-grained serverless AI workloads.
 
 ### Two levers to reduce cold-start impact
 
-**Lever 1 — Reduce $E_{\text{cs}}$ (make each cold start cheaper):**
+**Lever 1 — Reduce `E_cs` (make each cold start cheaper):**
 
 | Technique | What it reduces | Effect |
 |---|---|---|
-| Lighter runtimes, smaller packages | $T_{\text{cs}}$ | Less to load |
-| Quantization (INT8/FP16) | $T_{\text{cs}}$ | Model 2–4× smaller |
-| ONNX export | $T_{\text{cs}}$ + removes JIT step | Pre-compiled graph |
-| EFS instead of S3 | $T_{\text{cs}}$ | 8× faster model loading |
-| Container snapshotting (CRIU) | $T_{\text{cs}}$ | Restore from checkpoint |
+| Lighter runtimes, smaller packages | `T_cs` | Less to load |
+| Quantization (INT8/FP16) | `T_cs` | Model 2–4× smaller |
+| ONNX export | `T_cs` + removes JIT step | Pre-compiled graph |
+| EFS instead of S3 | `T_cs` | 8× faster model loading |
+| Container snapshotting (CRIU) | `T_cs` | Restore from checkpoint |
 
-**Lever 2 — Reduce $f$ (make cold starts less frequent):**
+**Lever 2 — Reduce `f` (make cold starts less frequent):**
 
 - Maintain warm pools (pre-initialized instances)
 - Increase keep-alive (TTL) duration
@@ -136,7 +136,7 @@ Let:
 - $P_{\text{idle}}$: idle power per warm instance (watts),
 - $T$: time interval of interest (seconds).
 
-The **energy cost of keeping $k$ instances warm** over $T$:
+The **energy cost of keeping `k` instances warm** over `T`:
 
 $$
 E_{\text{warm}} = k \cdot P_{\text{idle}} \cdot T \quad (6)
@@ -144,7 +144,7 @@ $$
 
 ### Expected cold-start cost without a warm pool
 
-With mean arrival rate $\lambda$ (invocations per second) and no warm pool (all invocations experience cold starts):
+With mean arrival rate `λ` (invocations per second) and no warm pool (all invocations experience cold starts):
 
 $$
 E_{\text{cs,no-pool}} \approx \lambda \cdot T \cdot E_{\text{cs}} \quad (7)
@@ -162,15 +162,15 @@ $$
 k \cdot P_{\text{idle}} \cdot T \le \lambda \cdot T \cdot E_{\text{cs}}
 $$
 
-Simplifying (the $T$ cancels):
+Simplifying (the `T` cancels):
 
 $$
 \boxed{ \lambda \ge \lambda_{\text{min}} = \frac{k \cdot P_{\text{idle}}}{E_{\text{cs}}} } \quad (8)
 $$
 
 **Interpretation:**
-- When $\lambda \ge \lambda_{\text{min}}$: keeping $k$ warm instances saves energy — cold starts are more expensive than idle power.
-- When $\lambda < \lambda_{\text{min}}$: it is greener to shut down and accept cold starts — idle power exceeds the cost of occasional cold starts.
+- When `λ ≥ λ_min`: keeping `k` warm instances saves energy — cold starts are more expensive than idle power.
+- When `λ < λ_min`: it is greener to shut down and accept cold starts — idle power exceeds the cost of occasional cold starts.
 
 ### Visualizing the break-even
 
@@ -205,7 +205,7 @@ $$
 \rho = \frac{\lambda}{c \cdot \mu} \quad (9)
 $$
 
-The system is stable only when $\rho < 1$. If $\rho \to 1$, the queue grows unbounded and latency spikes.
+The system is stable only when `ρ < 1`. If `ρ → 1`, the queue grows unbounded and latency spikes.
 
 ### Total energy over window T
 
@@ -216,19 +216,19 @@ E_{\text{total}}(c) = \underbrace{e_{\text{dyn}} \cdot \lambda \cdot T}_{\text{d
 $$
 
 where:
-- $e_{\text{dyn}}$ = energy per unit of service time (active compute),
-- $e_{\text{idle}}$ = idle energy per instance per unit time.
+- `e_dyn` = energy per unit of service time (active compute),
+- `e_idle` = idle energy per instance per unit time.
 
-**Green optimization:** choose the smallest $c$ that satisfies latency constraints, then check that $E_{\text{total}}(c)$ is minimized. There is no benefit to keeping more warm instances than needed to meet the SLO.
+**Green optimization:** choose the smallest `c` that satisfies latency constraints, then check that `E_total(c)` is minimized. There is no benefit to keeping more warm instances than needed to meet the SLO.
 
 ### Warm-pool sizing with latency SLO
 
 For user-facing functions with tail-latency requirements (e.g., p99 < 500ms):
 
-1. Use M/M/c formulas to compute tail latency as a function of $c$ and $\lambda, \mu$.
-2. Choose the **smallest** $c$ such that tail latency meets the SLO.
-3. Plug that $c$ into equation (10) to evaluate energy.
-4. Confirm no smaller $c$ satisfies the SLO.
+1. Use M/M/c formulas to compute tail latency as a function of `c` and `λ`, `μ`.
+2. Choose the **smallest** `c` such that tail latency meets the SLO.
+3. Plug that `c` into equation (10) to evaluate energy.
+4. Confirm no smaller `c` satisfies the SLO.
 
 This combines performance modeling with energy modeling, avoiding both over-provisioning (waste) and under-provisioning (SLO violations).
 
@@ -236,17 +236,17 @@ This combines performance modeling with energy modeling, avoiding both over-prov
 
 ## Batching: Amortizing Cold-Start Cost
 
-If cold-start cost $E_{\text{cs}}$ is amortized over $B$ samples within a single invocation, the overhead per sample becomes:
+If cold-start cost `E_cs` is amortized over `B` samples within a single invocation, the overhead per sample becomes:
 
 $$
 \rho_{\text{cs,per-sample}} = f \cdot \frac{E_{\text{cs}} / B}{\bar{E}_{\text{work,per-sample}}} \quad (11)
 $$
 
-Increasing $B$ (batch size) directly reduces $\rho_{\text{cs,per-sample}}$, making each cold start cheaper relative to the useful work it enables.
+Increasing `B` (batch size) directly reduces `ρ_cs_per_sample`, making each cold start cheaper relative to the useful work it enables.
 
-**Example:** A cold start costs $E_{\text{cs}} = 12$ J. For $B = 1$ sample: overhead = 12 J/sample. For $B = 100$ samples: overhead = 0.12 J/sample — a **100× reduction** in overhead per unit of useful work.
+**Example:** A cold start costs `E_cs = 12 J`. For `B = 1` sample: overhead = 12 J/sample. For `B = 100` samples: overhead = 0.12 J/sample — a **100× reduction** in overhead per unit of useful work.
 
-**Trade-off:** Larger $B$ increases per-invocation latency and memory usage, so $B$ must be bounded by SLO and hardware constraints.
+**Trade-off:** Larger `B` increases per-invocation latency and memory usage, so `B` must be bounded by SLO and hardware constraints.
 
 ---
 
@@ -258,9 +258,9 @@ Consider a Python-based data-preprocessing serverless function (AWS Lambda) that
 
 | Parameter | Value |
 |---|---|
-| Cold-start duration $T_{\text{cs}}$ | 400 ms |
-| Average cold-start power $P_{\text{cs}}$ | 30 W |
-| Idle power per warm instance $P_{\text{idle}}$ | 5 W |
+| Cold-start duration `T_cs` | 400 ms |
+| Average cold-start power `P_cs` | 30 W |
+| Idle power per warm instance `P_idle` | 5 W |
 | Execution time per batch | 200 ms |
 
 **Step 1 — Compute cold-start energy per event (from eq. 3):**
@@ -285,8 +285,8 @@ Monitor λ(t) over a 5-minute sliding window:
 ```
 
 **Implementation options:**
-- **AWS Lambda**: dynamically adjust `provisioned_concurrent_executions` based on moving-average $\lambda(t)$
-- **Knative / OpenFaaS**: set `min-scale` and `scale-to-zero` parameters driven by this $\lambda_{\text{min}}$ threshold
+- **AWS Lambda**: dynamically adjust `provisioned_concurrent_executions` based on moving-average `λ(t)`
+- **Knative / OpenFaaS**: set `min-scale` and `scale-to-zero` parameters driven by this `λ_min` threshold
 
 ---
 
@@ -300,9 +300,9 @@ Monitor λ(t) over a 5-minute sliding window:
 
 ### Simple analytical policy
 
-1. Profile each function: estimate $E_{\text{cs}}$, $P_{\text{idle}}$, and $\lambda(t)$
-2. Compute $\lambda_{\text{min}} = k \cdot P_{\text{idle}} / E_{\text{cs}}$
-3. Maintain $k$ warm instances only when $\lambda(t) \ge \lambda_{\text{min}}$; otherwise scale to zero
+1. Profile each function: estimate `E_cs`, `P_idle`, and `λ(t)`
+2. Compute `λ_min = k · P_idle / E_cs`
+3. Maintain `k` warm instances only when `λ(t) ≥ λ_min`; otherwise scale to zero
 
 ### Scheduled warm-up pings (lightweight alternative)
 
@@ -399,18 +399,18 @@ def train(model, optimizer, dataloader):
 
 ## Practical Guidelines
 
-1. **Profile first.** Measure $T_{\text{cs}}$, $P_{\text{cs}}$, $P_{\text{idle}}$, and $\lambda(t)$ per function before making warm-pool decisions.
+1. **Profile first.** Measure `T_cs`, `P_cs`, `P_idle`, and `λ(t)` per function before making warm-pool decisions.
 
-2. **Compute break-even thresholds.** Use equation (8) to determine $\lambda_{\text{min}}$ and dynamically toggle provisioned concurrency.
+2. **Compute break-even thresholds.** Use equation (8) to determine `λ_min` and dynamically toggle provisioned concurrency.
 
-3. **Minimize cold-start duration.** Apply quantization, ONNX export, EFS mounting, and global-scope caching to reduce $T_{\text{cs}}$ and $P_{\text{cs}}$.
+3. **Minimize cold-start duration.** Apply quantization, ONNX export, EFS mounting, and global-scope caching to reduce `T_cs` and `P_cs`.
 
-4. **Batch aggressively.** Increase invocation batch size $B$ to amortize cold-start cost across more useful work (equation 11).
+4. **Batch aggressively.** Increase invocation batch size `B` to amortize cold-start cost across more useful work (equation 11).
 
 5. **Cache in global scope.** Load model weights once per container lifetime; never reload inside the handler function.
 
 6. **Checkpoint training state.** Save to S3 after every epoch so cold starts mid-training have zero cost on progress.
 
-7. **Size warm pools with queueing models.** Use M/M/c analysis to find the minimum $c$ that satisfies latency SLOs, then verify energy with equation (10).
+7. **Size warm pools with queueing models.** Use M/M/c analysis to find the minimum `c` that satisfies latency SLOs, then verify energy with equation (10).
 
-8. **Adapt dynamically.** Workloads change — recompute $\lambda(t)$ and update warm-pool size continuously, or use autoscaler policies tied to the $\lambda_{\text{min}}$ threshold.
+8. **Adapt dynamically.** Workloads change — recompute `λ(t)` and update warm-pool size continuously, or use autoscaler policies tied to the `λ_min` threshold.
