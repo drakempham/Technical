@@ -1,0 +1,3 @@
+[submodule "Deep learning/backprop-is-gemm"]
+	path = Deep learning/backprop-is-gemm
+	url = https://github.com/danepham2204/Backpropagation-Is-Just-3-GEMM-Calls

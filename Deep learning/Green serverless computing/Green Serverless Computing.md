@@ -182,7 +182,7 @@ Because of this physical hardware hierarchy, the energy penalty drops exponentia
       (Cold)                 (Warm)
 ```
 
-**Mathematical Insight:** If an orchestrator maintains $\psi = 0.8$ with $\alpha = 2$, the required restore energy is $E_{cs} \cdot (1 - 0.8)^2 = E_{cs} \cdot 0.04$. By sacrificing only 20% of readiness (saving significant idle power), the system effectively eliminates **96%** of the cold-start energy spike. This mathematically proves that continuous deep-sleep architectures are vastly superior to the standard binary Warm/Cold toggles.
+**Mathematical Insight:** If an orchestrator maintains $\psi = 0.8$ with $\alpha = 2$ - like clean the CPU cache and pausing network connection, the required restore energy is $E_{cs} \cdot (1 - 0.8)^2 = E_{cs} \cdot 0.04$. By sacrificing only 20% of readiness (saving significant idle power), the system effectively eliminates **96%** of the cold-start energy spike. This mathematically proves that continuous deep-sleep architectures are vastly superior to the standard binary Warm/Cold toggles.
 <!-- ### Decay Power Function
 
 Conversely, developing upon the base $P_{idle}$, the idle power consumption at state $\psi$ decays according to:

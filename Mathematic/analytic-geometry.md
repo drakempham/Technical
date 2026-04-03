@@ -418,7 +418,7 @@ Neu nho duoc mot cau, hay nho cau nay:
 - `||x||_2`: do dai Euclid
 - `d(x, y) = ||x - y||`
 - `x^T y = ||x|| ||y|| cos theta`
-- `x^T y = 0`  <=>  `x` vuong goc `y`
+- `x^T y = 0` <=> `x` vuong goc `y`
 - `proj_u(x) = (x^T u / u^T u) u`
 - linear regression = projection cua `y` len `col(X)`
 - PCA = projection tot nhat theo tieu chi phuong sai
