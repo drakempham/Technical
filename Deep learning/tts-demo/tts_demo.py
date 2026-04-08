@@ -1,12 +1,13 @@
-from gtts import gTTS
+import pyttsx3
 
-# Nhận input text từ người dùng
-text = input("Nhập text: ")
+engine = pyttsx3.init() # object creation
 
-# Tạo đối tượng gTTS (lang='vi' cho tiếng Việt)
-tts = gTTS(text=text, lang="vi", slow=False)
+engine.setProperty("rate", 125)
+engine.setProperty("volume", 1.0)
 
-# Lưu ra file .mp3
-tts.save("output.mp3")
+text = input("Nhap text")
+
+engine.save_to_file(text, "output.mp3")
+engine.runAndWait()
 
 print("✅ Đã lưu file: output.mp3")
