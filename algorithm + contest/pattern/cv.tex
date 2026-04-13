@@ -1,0 +1,377 @@
+%-------------------------
+% Resume in Latex
+% Author : Vaishanth
+% License : MIT
+%------------------------
+
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\usepackage{fontawesome5}
+\usepackage{multicol}
+\usepackage{graphicx}%\setmainfont{Times New Roman}
+\setlength{\multicolsep}{-3.0pt}
+\setlength{\columnsep}{-1pt}
+\input{glyphtounicode}
+
+\RequirePackage{tikz}
+\RequirePackage{xcolor}
+
+\definecolor{cvblue}{HTML}{0E5484}
+\definecolor{black}{HTML}{130810}
+\definecolor{darkcolor}{HTML}{0F4539}
+\definecolor{cvgreen}{HTML}{3BD80D}
+\definecolor{taggreen}{HTML}{00E278}
+\definecolor{SlateGrey}{HTML}{2E2E2E}
+\definecolor{LightGrey}{HTML}{666666}
+\colorlet{name}{black}
+\colorlet{tagline}{darkcolor}
+\colorlet{heading}{darkcolor}
+\colorlet{headingrule}{cvblue}
+\colorlet{accent}{darkcolor}
+\colorlet{emphasis}{SlateGrey}
+\colorlet{body}{LightGrey}
+
+%----------FONT OPTIONS----------
+% sans-serif
+% \usepackage[sfdefault]{FiraSans}
+% \usepackage[sfdefault]{roboto}
+% \usepackage[sfdefault]{noto-sans}
+% \usepackage[default]{sourcesanspro}
+
+% \usepackage[T1]{fontenc}
+% \usepackage[T1]{fontenc}
+% \usepackage{cochineal}
+% \usepackage{fourier}
+
+% \usepackage{fontspec}
+% \usepackage{polyglossia}
+% \setmainlanguage{german}
+% \setmainfont{Times New Roman}
+
+% serif
+\usepackage{CormorantGaramond}
+\usepackage{charter}
+
+% \pagestyle{fancy}
+% \fancyhf{}  % clear all header and footer fields
+% \fancyfoot{}
+% \renewcommand{\headrulewidth}{0pt}
+% \renewcommand{\footrulewidth}{0pt}
+
+% Adjust margins
+\addtolength{\oddsidemargin}{-0.6in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1.19in}
+\addtolength{\topmargin}{-.7in}
+\addtolength{\textheight}{1.4in}
+\urlstyle{same}
+
+\definecolor{airforceblue}{rgb}{0.36, 0.54, 0.66}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Sections formatting
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large\bfseries
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+% Ensure that generate pdf is machine readable/ATS parsable
+\pdfgentounicode=1
+
+%-------------------------
+% Custom commands
+\newcommand{\resumeItem}[1]{
+  \item\small{
+    {#1 \vspace{-1pt}}
+  }
+}
+
+\newcommand{\classesList}[4]{
+    \item\small{
+        {#1 #2 #3 #4 \vspace{-2pt}}
+  }
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{1.0\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{\large#1} & \textbf{\small #2} \\
+      \textit{\large#3} & \textit{\small #4} \\
+      
+    \end{tabular*}\vspace{-7pt}
+}
+
+
+\newcommand{\resumeSingleSubheading}[4]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{1.0\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{\large#1} & \textbf{\small #2} \\
+      
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubSubheading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \textit{\small#1} & \textit{\small #2} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+
+\newcommand{\resumeProjectHeading}[2]{
+    \vspace{-5pt}\item
+    \begin{tabular*}{1.001\textwidth}{l@{\extracolsep{\fill}}r}
+      \small#1 & \textit{\small #2}\\ % Đã đổi \textbf thành \textit để giống Experience
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeHonorHeading}[2]{
+    \vspace{-8pt}\item
+    \begin{tabular*}{1.001\textwidth}{l@{\extracolsep{\fill}}r}
+      \small#1 & \textit{\small #2}\\
+    \end{tabular*}\vspace{-7pt}
+}
+
+
+\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
+
+\renewcommand\labelitemi{$\vcenter{\hbox{\tiny$\bullet$}}$}
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.0in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeHonorListStart}{\begin{itemize}[leftmargin=0.0in, label={}, itemsep=-4pt, parsep=0pt]}
+\newcommand{\resumeHonorListEnd}{\end{itemize}}
+\newcommand{\resumeProjectListStart}{\begin{itemize}[leftmargin=0.0in, label={}, itemsep=-6pt, parsep=0pt]}
+\newcommand{\resumeProjectListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}[leftmargin=0.1in]}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+\newcommand\sbullet[1][.5]{\mathbin{\vcenter{\hbox{\scalebox{#1}{$\bullet$}}}}}
+
+%-------------------------------------------\usepackage{fontspec}
+%%%%%%  RESUME STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{document}
+%----------HEADING----------
+
+\begin{center}
+    {\huge \textbf{Minh (Drake) Pham}} \\ \vspace{5pt} 
+    \small
+    \href{tel:+84962763170}{(+84) 962763170} ~ \small{-}
+    \href{mailto:hadtnt71@gmail.com}{hadtnt71@gmail.com} ~ \small{-}
+    \href{https://www.linkedin.com/in/drakempham/}{linkedin.com/in/drakempham} \\ \vspace{2pt}
+    \href{https://github.com/drakempham}{github.com/drakempham} ~ \small{-}
+    \href{https://leetcode.com/u/drakempham/}{leetcode.com/u/drakempham}
+    \vspace{-7pt}
+\end{center}
+
+%-----------SUMMARY-----------
+\section{\color{airforceblue}SUMMARY}
+
+\resumeSubHeadingListStart
+    \item[] \small{ % Use \item[] to suppress bullet
+        6+ years Experienced Engineer • VNU-HCMUS Computer Science Graduate. \\
+        Delivering 10+ production projects across FinTech, banking, transportation, and charity sectors. \\
+        Specialized in building scalable, high-performance applications with deep expertise in algorithms, data structures, and modern architectures. \\Versatile background as a Full-Stack, DevOps including research and B2B/B2C product delivery.\\
+    }
+\resumeSubHeadingListEnd
+
+\vspace{-10pt} % Adjust if needed; smaller than -15pt to avoid over-pull
+
+%-----------EDUCATION-----------
+\section{\color{airforceblue}EDUCATION}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {VNUHCM - University of Science}{Ho Chi Minh City, Vietnam}
+      {Bachelor of Computer Science}{Sep 2019 -- Sep 2023}
+      \resumeItemListStart
+        \item[] \small{GPA: 3.7/4.0}
+      \resumeItemListEnd
+  \resumeSubHeadingListEnd
+
+%-----------PROGRAMMING SKILLS-----------
+\section{\color{airforceblue}TECHNICAL SKILLS}
+ \begin{itemize}[leftmargin=0in, label={}]
+    \small{\item{
+     \textbf{\normalsize{Programming Languages:}}{ \normalsize{Python, C++, Java (Spring Boot), Golang, Ruby, CUDA (Nvidia) }} \\
+      \vspace{1.2pt}
+      
+     \textbf{\normalsize{Distributed Systems \& Middleware:}}{ \normalsize{Kafka, Redis, ActiveMQ, Microservices, Message Queues}} \\
+      \vspace{1.2pt}
+      
+     \textbf{\normalsize{Databases \& Storage:}}{ \normalsize{MySQL, TiDB, PostgreSQL, MongoDB}} \\
+      \vspace{1.2pt}
+      
+     \textbf{\normalsize{Cloud Platform\& Infrastructure:}}{ \normalsize{AWS Lambda, Google Cloud Functions, Azure Functions, Docker, Git, CI/CD Pipelines}}
+    }}
+ \end{itemize}
+ \vspace{-16pt}
+ 
+ 
+%-----------WORK EXPERIENCE-----------
+\section{\color{airforceblue}WORK EXPERIENCE}
+  \resumeSubHeadingListStart
+
+    \resumeSubheading
+  {Infrastructure Engineer -- Core Payment Engine}{Ho Chi Minh City, VN}
+  {VNG Corporation (ZaloPay)\href{https://github.com/drakempham/Scale-30M-users-infra}{ - GitHub: Scale-30M-users-infra}}{06/2024 -- Present}
+        \resumeItem{Engineered a distributed data pipeline using Apache Kafka and Spark to process 1TB+ of daily transaction logs; implemented multi-threaded prefetching and sharding, reducing GPU starvation by 20\% and accelerating model training cycles by 1.3x.}
+        \resumeItem{Engineered high-throughput transaction infrastructure handling 1,000+ peak TPS with low-latency optimizations.}
+        \resumeItem{Optimized MySQL and Kafka architectures to maintain highly reliable, distributed payment systems.}
+        \resumeItem{\normalsize{Designed and implemented a Saga-based transaction engine using State Machines to ensure atomicity and recoverability; handled complex states (start, processing, waiting, recovery) to resolve failed-at-half transactions.}}
+        \resumeItem{\normalsize{Developed idempotent payment order processing to prevent double-charging during network retries and timeouts, ensuring system correctness at 1,000+ peak TPS.}}
+        \resumeItem{\normalsize{Implemented a Hook Handler system to decouple cross-cutting concerns like logging, auditing, and notifications from the core business flows.}}
+        \resumeItem{\normalsize{Optimized distributed consistency and observability by using Sonyflake for collision-free, time-ordered unique ID generation with B3 Tracing for cross-service context propagation, ensuring 100\% request lineage across the payment lifecycle.}}
+        \resumeItem{\normalsize{Centralized and optimized the ZAS database architecture by consolidating fragmented systems into a unified, high-performance data space.}}
+        \resumeItem{\normalsize{Designed and deployed automated refund APIs to handle transaction failures or timeouts, ensuring financial consistency.}}
+        \resumeItem{\normalsize{Mentored new fresher during onboarding, facilitating knowledge transfer, accelerating ramp-up, and ensuring smooth integration into the team.}}
+        
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {Backend Engineer -- Booking and Payment Taxi System}{Ho Chi Minh City, Vietnam}
+      {FPT Software}{10/2023 -- 06/2024}
+      \resumeItemListStart
+        \resumeItem{\normalsize{Developed server-side logic for high-performance microservices (Payment, OpenAPI, SMS, IVR), contributing to a 16\% increase in website traffic and conversion rates.}}
+        \resumeItem{\normalsize{Optimized scalability by improving asynchronous processing with Kafka, Schema Registry, and RedisMQ; implemented advanced consumption strategies to handle blocking errors and ordering.}}
+        \resumeItem{\normalsize{Deployed and monitored services across SIT, UAT, and Production environments using CloudWatch, CodePipeline, and Grafana.}}
+        \resumeItem{\normalsize{Migrated approximately 1 million records between upstream and downstream databases using AWS Glue (ETL), Lambda, and S3 notifications.}}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {Fullstack Engineer}{Ho Chi Minh City, Vietnam}
+      {KMS Technology}{Sep 2022 -- Oct 2023}
+      \resumeItemListStart
+        \resumeItem{\normalsize{Demonstrated strong attention to detail in full-stack development, helping reduce system-side production errors by approximately 25\%.}}
+      \resumeItemListEnd
+
+    % \resumeSubheading
+    %   {Teaching Assistant}{Ho Chi Minh City, Vietnam}
+    %   {Kmin Academy}{Aug 2022 -- Aug 2025}
+    %   \resumeItemListStart
+    %     \resumeItem{\normalsize{Guided students in mastering Core CS concepts and Full-stack development, resulting in improved academic performance and project quality.}}
+    %     \resumeItem{\normalsize{Collaborated with instructors to develop and refine technical course materials, assignments, and assessments for optimized learning.}}
+    %     \resumeItem{\normalsize{Facilitated study sessions and provided detailed technical feedback on student projects to bridge the gap between theory and practice.}}
+    %   \resumeItemListEnd
+
+  \resumeSubHeadingListEnd
+\vspace{-12pt}
+
+
+%-----------PROJECTS-----------
+\section{\color{airforceblue}PROJECTS}
+  \resumeProjectListStart
+
+    % Project 1
+    \resumeProjectHeading
+    {\textbf{cuBLAS Worklog: Hardware-Aware GEMM Optimization} $|$ \emph{CUDA C++, PTX, Tesla T4 - Colab, Nsight Compute}} {2025}
+   \resumeItemListStart
+        \resumeItem{\normalsize{Medium paper: \href{https://medium.com/@minhdrake/cublas-worklog-hardware-aware-gemm-optimization-for-nvidia-tensor-cores-ddf2712a6a33}{CuBLAS Worklog Hardware-Aware GEMM Optimization for NVIDIA Tensor Core}}}
+        \resumeItem{\normalsize{Engineered an 11-stage architectural optimization worklog, systematically transforming a memory-bound scalar baseline into high-performance pipelines yielding $\sim$4.0 TFLOP/s for FP32 (90\% of cuBLAS) and 17.06 TFLOP/s for mixed-precision (FP16/FP32) Tensor Cores.}}
+        \resumeItem{\normalsize{Dismantled the HBM memory-wall and bypassed shared-memory scatter overhead by architecting 128$\times$128 hardware-aligned block tiles, 128-bit \texttt{int4} global memory vectorization, and PTX \texttt{ldmatrix} zero-overhead register staging.}}
+        \resumeItem{\normalsize{Profiled microarchitectural constraints (warp stalls, instruction pressure) via Nsight Compute to double active warp rates to 49.4\% SM occupancy, delivering a massive 36$\times$ overall throughput speedup on an NVIDIA T4 GPU.}}
+    \resumeItemListEnd
+    % Project 2
+    \resumeProjectHeading
+    {\textbf{nanoGPT Token Predictor (v1)} $|$ \emph{Python, PyTorch, Transformer Architecture} $|$ \href{https://github.com/danepham2204/nanoGPT-Token-Prediction}{GitHub link}} {2025 - 2026}
+    \resumeItemListStart
+        \resumeItem{\normalsize{Engineered a character-level Generative Pre-trained Transformer (GPT) from scratch, evolving a naive Bigram baseline into a deep architecture powered by Multi-Head Self-Attention and Layer Normalization.}}
+        \resumeItem{\normalsize{Architected the autoregressive generation pipeline utilizing scaled dot-product attention with causal triangular masking to prevent forward-looking data leakage during sequence modeling.}}
+        \resumeItem{\normalsize{Trained a $\sim$0.21M parameter network on the Tiny Shakespeare dataset via AdamW optimization, driving cross-entropy loss down by 62\% (from 4.41 to 1.66) and successfully capturing character-level grammatical structures.}}
+    \resumeItemListEnd
+
+    % Project 1
+    \resumeProjectHeading
+    {\textbf{Fault-Tolerant Stream Processing with Exactly-Once Semantics} $|$ \emph{Kafka, Docker, Java}} {2025 - 2026}
+    \resumeItemListStart
+        \resumeItem{\normalsize{Engineered a fault-tolerant pipeline using Kafka Transactions (KIP-98) and atomic Consume-Transform-Produce pattern, solving the distributed "dual-write" problem without external state stores.}}
+        \resumeItem{\normalsize{Deep-dived into Producer internals to implement Offset-Transaction Binding, ensuring the input offset commit and output message visibility occur atomically or not at all (Atomic Commit).}}
+        \resumeItem{\normalsize{Validated system integrity via Chaos Engineering: injected random process crashes during active transactions, achieving 100\% data accuracy (Zero Duplicates/Loss) upon recovery.}}
+    \resumeItemListEnd
+
+    % Project 3
+    \resumeProjectHeading
+      {\textbf{Asset Exchange V2} $|$ \small{Java, Kafka, MySQL, Redis, gRPC/REST, Kubernetes, OpenSearch}}{2024 - 2026}
+      \resumeItemListStart
+        \resumeItem{\normalsize{Architected a high-throughput asset exchange engine based on saga context and state machine, ensuring strict atomicity for cross-channel fund movements using a Saga-based orchestration.}}
+        \resumeItem{\normalsize{Strengthened system resilience by implementing a multi-tier retry strategy and Dead Letter Queues (DLQ) in Kafka, ensuring zero data loss and automated recovery during intermittent failures.}}
+        \resumeItem{\normalsize{Ensured data consistency between MySQL and Kafka by adopting the Transactional Outbox pattern, guaranteeing that every financial state change is reliably published and processed.}}
+        \resumeItem{\normalsize{Successfully mitigated Kafka consumer lag issues during high-traffic periods by scaling topic partitions and optimizing consumer-side processing logic, significantly improving message throughput.}}
+      \resumeItemListEnd
+
+    % % Project 3
+    % \resumeProjectHeading
+    %   {\textbf{Asset Exchange V2} $|$ \small{Java, Kafka, MySQL, Redis, gRPC/REST, Kubernetes, OpenSearch}}{2024 -- Present}
+    %   \resumeItemListStart
+    %     \resumeItem{\normalsize{Architected a high-throughput asset exchange engine based on saga context and state machine, ensuring strict atomicity for cross-channel fund movements using a Saga-based orchestration.}}
+    %     \resumeItem{\normalsize{Strengthened system resilience by implementing a multi-tier retry strategy and Dead Letter Queues (DLQ) in Kafka, ensuring zero data loss and automated recovery during intermittent failures.}}
+    %     \resumeItem{\normalsize{Ensured data consistency between MySQL and Kafka by adopting the Transactional Outbox pattern, guaranteeing that every financial state change is reliably published and processed.}}
+    %     \resumeItem{\normalsize{Successfully mitigated Kafka consumer lag issues during high-traffic periods by scaling topic partitions and optimizing consumer-side processing logic, significantly improving message throughput.}}
+    %   \resumeItemListEnd
+
+    % \resumeProjectHeading
+    %   {\textbf{Next Gen Platform CN3 Taxi} $|$ \small{Golang, Java, AWS, Kafka, ActiveMQ, MongoDB, Postgres}}{10/2023 -- Present}
+    %   \resumeItemListStart
+    %     \resumeItem{\normalsize{Developed a cloud-native microservices platform for taxi dispatching, focusing on scalability, high availability, and secure dispatching logic.}}
+    %     \resumeItem{\normalsize{Enhanced system performance and scalability by optimizing data organization and improving asynchronous communication workflows.}}
+    %   \resumeItemListEnd
+
+  \resumeProjectListEnd
+\vspace{-12pt}
+
+%-----------CERTIFICATIONS & LANGUAGES-----------
+\section{\color{airforceblue}CERTIFICATIONS \& LANGUAGES}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+     \textbf{Certificates:}{ AWS Certified Developer -- Associate (AWS, 10/2023), Outstanding Contribution (GDG Cloud, 04/2023), Excellent Project (Solana Vietnam Coding Camp, 12/2022)} \\
+     \vspace{2pt}
+     \textbf{Languages:}{ IELTS 6.5, TOEIC (~800/900)}
+    }}
+ \end{itemize}
+ \vspace{-12pt}
+
+%-----------HONORS & AWARDS-----------
+\section{\color{airforceblue}HONORS \& AWARDS}
+  \resumeHonorListStart
+    \resumeHonorHeading
+      {\textbf{Bronze Medal} -- Vietnam Student Olympiad in Informatics (National Level)}{2019}
+    \resumeHonorHeading
+      {\textbf{Facilitator Engineer} - Google Cloud}{2022-2025}
+    \resumeHonorHeading
+      {\textbf{SAKURA SCIENCE Exchange Student} - Japan Science and Technology}{2023}
+    \resumeHonorHeading
+      {\textbf{Outstanding Performance \& 1st Runner Up Hacker Competition} -- Zalopay}{2025}
+    \resumeHonorHeading
+      {\textbf{Top 20 Coding Contest  Weekly Challenge} -- LeetCode}{2023}
+    \resumeHonorHeading
+      {\textbf{GDSC Hackathon (Google)} -- Top 22 Project}{Apr 2023}
+    \resumeHonorHeading
+      {\textbf{EVN Scholarship} -- Top 100 Highest Academic Achievement Award}{2022 -- 2023}
+    \resumeHonorHeading
+      {\textbf{Excellent Youth Award} -- VNU-HCM University of Science}{Mar 2023}
+    \resumeHonorHeading
+      {\textbf{Most Contributor Developer} -- FPT Corporation}{Sep 2023}
+    \resumeHonorHeading
+      {\textbf{Head of Fullstack Team} -- GDSC-HCMUS}{05/2022 -- 05/2023}
+    \resumeHonorHeading
+      {\textbf{Head of Engineer Team} -- ITConnectUS}{02/2022 -- 12/2023}
+  \resumeHonorListEnd
+
+\vspace{-12pt}
+
+\end{document}

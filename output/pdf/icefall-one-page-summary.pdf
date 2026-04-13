@@ -1,0 +1,201 @@
+%PDF-1.4
+%‚„œ”
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R] /Count 1 >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 4 0 R /F2 5 0 R /F3 6 0 R >> >> /Contents 7 0 R >>
+endobj
+4 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+5 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >>
+endobj
+6 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Courier >>
+endobj
+7 0 obj
+<< /Length 7950 >>
+stream
+0.965 0.979 0.996 rg 0 744 612 48 re f
+0.078 0.173 0.290 rg
+BT /F2 18 Tf 42.00 762.00 Td (icefall - One-Page App Summary) Tj ET
+0.329 0.380 0.443 rg
+BT /F1 7.8 Tf 42.00 745.00 Td (Scope: /Users/minhpd/Code/Technical/icefall subrepo; content is based only on local repo evidence.) Tj ET
+0.682 0.765 0.855 RG 1.00 w
+42.00 735.00 m 570.00 735.00 l S
+0.184 0.349 0.537 rg
+BT /F2 8.5 Tf 42.00 713.00 Td (WHAT IT IS) Tj ET
+0.776 0.827 0.886 RG 0.60 w
+42.00 708.00 m 292.00 708.00 l S
+0.161 0.200 0.255 rg
+BT /F1 8.6 Tf 42.00 695.00 Td (icefall is a Python collection of speech-related recipes) Tj ET
+0.161 0.200 0.255 rg
+BT /F1 8.6 Tf 42.00 683.50 Td (for datasets using k2-fsa and lhotse. The repo also points) Tj ET
+0.161 0.200 0.255 rg
+BT /F1 8.6 Tf 42.00 672.00 Td (to sherpa, sherpa-ncnn, and sherpa-onnx for deploying) Tj ET
+0.161 0.200 0.255 rg
+BT /F1 8.6 Tf 42.00 660.50 Td (models trained or used with icefall.) Tj ET
+0.184 0.349 0.537 rg
+BT /F2 8.5 Tf 42.00 642.00 Td (WHO IT'S FOR) Tj ET
+0.776 0.827 0.886 RG 0.60 w
+42.00 637.00 m 292.00 637.00 l S
+0.125 0.161 0.212 rg
+BT /F1 8.3 Tf 42.00 624.00 Td (- Primary persona: Not found in repo.) Tj ET
+0.125 0.161 0.212 rg
+BT /F1 8.3 Tf 42.00 613.30 Td (- Evidence suggests speech/ML developers and researchers) Tj ET
+0.125 0.161 0.212 rg
+BT /F1 8.3 Tf 50.00 602.60 Td (working with ASR/TTS/SLU recipes, pretrained speech) Tj ET
+0.125 0.161 0.212 rg
+BT /F1 8.3 Tf 50.00 591.90 Td (models, and k2/lhotse-based experiments.) Tj ET
+0.184 0.349 0.537 rg
+BT /F2 8.5 Tf 42.00 574.20 Td (WHAT IT DOES) Tj ET
+0.776 0.827 0.886 RG 0.60 w
+42.00 569.20 m 292.00 569.20 l S
+0.125 0.161 0.212 rg
+BT /F1 7.65 Tf 42.00 556.20 Td (- Provides dataset recipes under egs/ for ASR, TTS, SLU,) Tj ET
+0.125 0.161 0.212 rg
+BT /F1 7.65 Tf 50.00 546.55 Td (ST, KWS, AT, and related speech tasks.) Tj ET
+0.125 0.161 0.212 rg
+BT /F1 7.65 Tf 42.00 536.90 Td (- Supports many ASR datasets, including yesno, Aishell,) Tj ET
+0.125 0.161 0.212 rg
+BT /F1 7.65 Tf 50.00 527.25 Td (CommonVoice, GigaSpeech, LibriSpeech, TED-LIUM3,) Tj ET
+0.125 0.161 0.212 rg
+BT /F1 7.65 Tf 50.00 517.60 Td (VoxPopuli, WenetSpeech, and more.) Tj ET
+0.125 0.161 0.212 rg
+BT /F1 7.65 Tf 42.00 507.95 Td (- Includes model families such as TDNN LSTM CTC, Conformer) Tj ET
+0.125 0.161 0.212 rg
+BT /F1 7.65 Tf 50.00 498.30 Td (CTC/MMI, Zipformer, transducer variants, and Whisper) Tj ET
+0.125 0.161 0.212 rg
+BT /F1 7.65 Tf 50.00 488.65 Td (fine-tuning for Aishell-1.) Tj ET
+0.125 0.161 0.212 rg
+BT /F1 7.65 Tf 42.00 479.00 Td (- Supplies shared Python utilities for decoding,) Tj ET
+0.125 0.161 0.212 rg
+BT /F1 7.65 Tf 50.00 469.35 Td (checkpoints, graph compilers, lexicons, language models,) Tj ET
+0.125 0.161 0.212 rg
+BT /F1 7.65 Tf 50.00 459.70 Td (distributed helpers, diagnostics, and datasets.) Tj ET
+0.125 0.161 0.212 rg
+BT /F1 7.65 Tf 42.00 450.05 Td (- Includes recipe scripts for data preparation, feature) Tj ET
+0.125 0.161 0.212 rg
+BT /F1 7.65 Tf 50.00 440.40 Td (computation, language/HLG graph preparation, training,) Tj ET
+0.125 0.161 0.212 rg
+BT /F1 7.65 Tf 50.00 430.75 Td (decoding, export, ONNX, and pretrained-model use.) Tj ET
+0.125 0.161 0.212 rg
+BT /F1 7.65 Tf 42.00 421.10 Td (- Documents model export paths such as ONNX, TorchScript,) Tj ET
+0.125 0.161 0.212 rg
+BT /F1 7.65 Tf 50.00 411.45 Td (NCNN, and model state_dict export.) Tj ET
+0.125 0.161 0.212 rg
+BT /F1 7.65 Tf 42.00 401.80 Td (- Links browser-based pretrained-model demos through a) Tj ET
+0.125 0.161 0.212 rg
+BT /F1 7.65 Tf 50.00 392.15 Td (Hugging Face Space.) Tj ET
+0.184 0.349 0.537 rg
+BT /F2 8.5 Tf 319.00 713.00 Td (HOW IT WORKS) Tj ET
+0.776 0.827 0.886 RG 0.60 w
+319.00 708.00 m 570.00 708.00 l S
+0.969 0.976 0.988 rg 0.871 0.894 0.925 RG
+314.00 573.00 259.00 128.00 re B
+0.122 0.169 0.227 rg
+BT /F3 7.5 Tf 324.00 687.00 Td (Datasets + audio) Tj ET
+0.122 0.169 0.227 rg
+BT /F3 7.5 Tf 324.00 676.00 Td (-> egs/<dataset>/<task>/prepare.sh) Tj ET
+0.122 0.169 0.227 rg
+BT /F3 7.5 Tf 324.00 665.00 Td (-> lhotse manifests + fbank features) Tj ET
+0.122 0.169 0.227 rg
+BT /F3 7.5 Tf 324.00 654.00 Td (-> language resources + k2 FSA graphs) Tj ET
+0.122 0.169 0.227 rg
+BT /F3 7.5 Tf 324.00 643.00 Td (-> recipe model train.py) Tj ET
+0.122 0.169 0.227 rg
+BT /F3 7.5 Tf 324.00 632.00 Td (-> checkpoints / exp artifacts) Tj ET
+0.122 0.169 0.227 rg
+BT /F3 7.5 Tf 324.00 621.00 Td (-> decode.py / export.py / deployment toolchain) Tj ET
+0.125 0.161 0.212 rg
+BT /F1 7.7 Tf 319.00 552.00 Td (- Core library: icefall/*.py contains reusable) Tj ET
+0.125 0.161 0.212 rg
+BT /F1 7.7 Tf 327.00 542.30 Td (training/decoding support, graph compilers, lexicon) Tj ET
+0.125 0.161 0.212 rg
+BT /F1 7.7 Tf 327.00 532.60 Td (helpers, LM wrappers, checkpointing, and environment) Tj ET
+0.125 0.161 0.212 rg
+BT /F1 7.7 Tf 327.00 522.90 Td (utilities.) Tj ET
+0.125 0.161 0.212 rg
+BT /F1 7.7 Tf 319.00 513.20 Td (- Recipes: egs/ groups dataset-specific pipelines; the) Tj ET
+0.125 0.161 0.212 rg
+BT /F1 7.7 Tf 327.00 503.50 Td (yesno recipe shows prepare.sh -> TDNN or transducer) Tj ET
+0.125 0.161 0.212 rg
+BT /F1 7.7 Tf 327.00 493.80 Td (train/decode/export scripts.) Tj ET
+0.125 0.161 0.212 rg
+BT /F1 7.7 Tf 319.00 484.10 Td (- External services/components evidenced in docs: k2,) Tj ET
+0.125 0.161 0.212 rg
+BT /F1 7.7 Tf 327.00 474.40 Td (lhotse, torch, torchaudio, kaldifst/kaldilm, ONNX/ONNX) Tj ET
+0.125 0.161 0.212 rg
+BT /F1 7.7 Tf 327.00 464.70 Td (Runtime, tensorboard, and optional sherpa-family) Tj ET
+0.125 0.161 0.212 rg
+BT /F1 7.7 Tf 327.00 455.00 Td (deployment projects.) Tj ET
+0.125 0.161 0.212 rg
+BT /F1 7.7 Tf 319.00 445.30 Td (- Data flow evidence: yesno prepare.sh downloads data,) Tj ET
+0.125 0.161 0.212 rg
+BT /F1 7.7 Tf 327.00 435.60 Td (prepares manifests, computes fbank features, prepares) Tj ET
+0.125 0.161 0.212 rg
+BT /F1 7.7 Tf 327.00 425.90 Td (language files, creates G, and compiles HLG before) Tj ET
+0.125 0.161 0.212 rg
+BT /F1 7.7 Tf 327.00 416.20 Td (training/decoding.) Tj ET
+0.125 0.161 0.212 rg
+BT /F1 7.7 Tf 319.00 406.50 Td (- Runtime server/API: Not found in repo evidence inspected;) Tj ET
+0.125 0.161 0.212 rg
+BT /F1 7.7 Tf 327.00 396.80 Td (this appears to be a recipe/toolkit repo, not a single) Tj ET
+0.125 0.161 0.212 rg
+BT /F1 7.7 Tf 327.00 387.10 Td (hosted web service.) Tj ET
+0.184 0.349 0.537 rg
+BT /F2 8.5 Tf 319.00 369.40 Td (HOW TO RUN) Tj ET
+0.776 0.827 0.886 RG 0.60 w
+319.00 364.40 m 570.00 364.40 l S
+0.125 0.161 0.212 rg
+BT /F1 7.8 Tf 319.00 351.40 Td (- Install prerequisites in documented order: CUDA/cuDNN if) Tj ET
+0.125 0.161 0.212 rg
+BT /F1 7.8 Tf 327.00 341.60 Td (needed, torch + torchaudio, k2, then lhotse.) Tj ET
+0.125 0.161 0.212 rg
+BT /F1 7.8 Tf 319.00 331.80 Td (- From the icefall repo: install Python requirements and) Tj ET
+0.125 0.161 0.212 rg
+BT /F1 7.8 Tf 327.00 322.00 Td (set PYTHONPATH to the repo path.) Tj ET
+0.125 0.161 0.212 rg
+BT /F1 7.8 Tf 319.00 312.20 Td (- Smoke test with the CPU yesno recipe: prepare data,) Tj ET
+0.125 0.161 0.212 rg
+BT /F1 7.8 Tf 327.00 302.40 Td (optionally hide GPUs, then run TDNN training and) Tj ET
+0.125 0.161 0.212 rg
+BT /F1 7.8 Tf 327.00 292.60 Td (decoding.) Tj ET
+0.980 0.984 0.992 rg 0.882 0.902 0.929 RG
+314.00 228.80 259.00 60.00 re B
+0.122 0.169 0.227 rg
+BT /F3 6.9 Tf 324.00 272.80 Td (cd /Users/minhpd/Code/Technical/icefall) Tj ET
+0.122 0.169 0.227 rg
+BT /F3 6.9 Tf 324.00 263.60 Td (pip install -r requirements.txt) Tj ET
+0.122 0.169 0.227 rg
+BT /F3 6.9 Tf 324.00 254.40 Td (export PYTHONPATH=$PWD:$PYTHONPATH) Tj ET
+0.122 0.169 0.227 rg
+BT /F3 6.9 Tf 324.00 245.20 Td (cd egs/yesno/ASR && ./prepare.sh) Tj ET
+0.122 0.169 0.227 rg
+BT /F3 6.9 Tf 324.00 236.00 Td (export CUDA_VISIBLE_DEVICES="" && ./tdnn/train.py) Tj ET
+0.827 0.859 0.898 RG 0.60 w
+42.00 38.00 m 570.00 38.00 l S
+0.357 0.404 0.467 rg
+BT /F1 6.8 Tf 42.00 25.00 Td (Evidence checked: README.md, docs/source/installation/index.rst, requirements.txt, icefall/ package tree, egs/yesno/ASR scripts.) Tj ET
+endstream
+endobj
+xref
+0 8
+0000000000 65535 f 
+0000000015 00000 n 
+0000000064 00000 n 
+0000000121 00000 n 
+0000000267 00000 n 
+0000000337 00000 n 
+0000000412 00000 n 
+0000000480 00000 n 
+trailer
+<< /Size 8 /Root 1 0 R >>
+startxref
+8482
+%%EOF
