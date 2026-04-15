@@ -62,11 +62,41 @@ class OpenTheLock:
         return -1
 
 
-sol = OpenTheLock()
-deadends = ["0201", "0101", "0102", "1212", "2002"]
-target = "0202"
-print(sol.openLock(deadends, target))
+# sol = OpenTheLock()
+# deadends = ["0201", "0101", "0102", "1212", "2002"]
+# target = "0202"
+# print(sol.openLock(deadends, target))
 
-deadends = ["8888"]
-target = "0009"
-print(sol.openLock(deadends, target))
+# deadends = ["8888"]
+# target = "0009"
+# print(sol.openLock(deadends, target))
+
+
+class NearestExitFromEntracneInMaze:
+    def nearestExit(self, maze: List[List[str]], entrance: List[int]) -> int:
+        queue = deque([(0, entrance)])  # step, position
+        # create {} breacker with at least one element
+        visited = {tuple(entrance)}
+        directions = [[-1, 0], [0, -1], [0, 1], [1, 0]]
+
+        while queue:
+            step, pos = queue.popleft()
+            if (pos[0] == 0 or pos[0] == len(maze)-1 or pos[1] == 0 or pos[1] == len(maze[0])-1) and step != 0:
+                return step
+            for direction in directions:
+                if 0 <= pos[0] + direction[0] < len(maze) and 0 <= pos[1] + direction[1] < len(maze[0]):
+                    next_step = [pos[0] + direction[0], pos[1] + direction[1]]
+                    if tuple(next_step) not in visited and maze[next_step[0]][next_step[1]] == '.':
+                        visited.add(tuple(next_step))
+                        queue.append((step + 1, next_step))
+        return -1
+
+
+sol = NearestExitFromEntracneInMaze()
+# maze = [["+", "+", ".", "+"], [".", ".", ".", "+"], ["+", "+", "+", "."]]
+# entrance = [1, 2]
+# print(sol.nearestExit(maze, entrance))
+
+maze = [[".", "+"]]
+entrance = [0, 0]
+print(sol.nearestExit(maze, entrance))
