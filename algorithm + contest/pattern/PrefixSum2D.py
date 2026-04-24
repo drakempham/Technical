@@ -1,3 +1,6 @@
+from typing import List
+
+
 class PrefixSum2D:
     def __init__(self, matrix):
         M = len(matrix)
@@ -13,7 +16,10 @@ class PrefixSum2D:
 
     def sumOfMtrx(self, r1: int, c1: int, r2: int, c2: int) -> int:
         """Return sum of submatrix [r1..r2][c1..c2] (0-indexed, inclusive)."""
-        r1 += 1; r2 += 1; c1 += 1; c2 += 1
+        r1 += 1
+        r2 += 1
+        c1 += 1
+        c2 += 1
         return (self.P[r2][c2]
                 - self.P[r1-1][c2]
                 - self.P[r2][c1-1]
@@ -30,27 +36,53 @@ if __name__ == "__main__":
         [1, 0, 3, 0, 5]
     ]
     ps = PrefixSum2D(matrix)
-    
+
     # Test 1 (r1=2, c1=1, r2=4, c2=3)
     # Expected submatrix:
     # 2 0 1
     # 1 0 1
     # 0 3 0
     # Sum: 8
-    assert ps.sumOfMtrx(2, 1, 4, 3) == 8, f"Expected 8, got {ps.sumOfMtrx(2, 1, 4, 3)}"
-    
+    assert ps.sumOfMtrx(
+        2, 1, 4, 3) == 8, f"Expected 8, got {ps.sumOfMtrx(2, 1, 4, 3)}"
+
     # Test 2 (r1=1, c1=1, r2=2, c2=2)
     # Expected submatrix:
     # 6 3
     # 2 0
     # Sum: 11
-    assert ps.sumOfMtrx(1, 1, 2, 2) == 11, f"Expected 11, got {ps.sumOfMtrx(1, 1, 2, 2)}"
-    
+    assert ps.sumOfMtrx(
+        1, 1, 2, 2) == 11, f"Expected 11, got {ps.sumOfMtrx(1, 1, 2, 2)}"
+
     # Test 3 (r1=1, c1=2, r2=2, c2=4)
     # Expected submatrix:
     # 3 2 1
     # 0 1 5
     # Sum: 12
-    assert ps.sumOfMtrx(1, 2, 2, 4) == 12, f"Expected 12, got {ps.sumOfMtrx(1, 2, 2, 4)}"
+    assert ps.sumOfMtrx(
+        1, 2, 2, 4) == 12, f"Expected 12, got {ps.sumOfMtrx(1, 2, 2, 4)}"
 
     print("All test cases passed successfully!")
+
+
+class NumMatrix:
+
+    def __init__(self, matrix: List[List[int]]):
+        m = len(matrix)
+        n = len(matrix[0])
+        self.psum = [([0] * (n+1)) for _ in range(m+1)]
+        for i in range(m):
+            for j in range(n):
+                self.psum[i+1][j+1] = self.psum[i][j+1] + \
+                    self.psum[i+1][j] + matrix[i][j] - self.psum[i][j]
+
+    def sumRegion(self, row1: int, col1: int, row2: int, col2: int) -> int:
+        return self.psum[row2+1][col2+1] - self.psum[row1][col2+1] - self.psum[row2+1][col1] + self.psum[row1][col1]
+
+
+# Your NumMatrix object will be instantiated and called as such:
+# obj = NumMatrix(matrix)
+# param_1 = obj.sumRegion(row1,col1,row2,col2)
+sol = NumMatrix([[3, 0, 1, 4, 2], [5, 6, 3, 2, 1], [
+                1, 2, 0, 1, 5], [4, 1, 0, 1, 7], [1, 0, 3, 0, 5]])
+print(sol.sumRegion(2, 1, 4, 3))

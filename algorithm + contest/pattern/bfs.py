@@ -100,3 +100,28 @@ sol = NearestExitFromEntracneInMaze()
 maze = [[".", "+"]]
 entrance = [0, 0]
 print(sol.nearestExit(maze, entrance))
+
+
+class MultiSourceFloodFill:
+    def colorGrid(self, m: int, n: int, sources: List[List[int]]) -> List[List[int]]:
+        ans = [([0] * (n)) for _ in range(m)]
+        queue = deque()
+        sources.sort(key=lambda x: -x[2])
+        for r, c, color in sources:
+            ans[r][c] = color
+            queue.append((r, c, color))
+        directions = [[-1, 0], [0, -1], [1, 0], [0, 1]]
+
+        while queue:
+            curr_r, curr_c, curr_color = queue.popleft()
+            for r, c in directions:
+                new_r = curr_r + r
+                new_c = curr_c + c
+                if 0 <= new_r < m and 0 <= new_c < n and ans[new_r][new_c] == 0:
+                    ans[new_r][new_c] = curr_color
+                    queue.append((new_r, new_c, curr_color))
+        return ans
+
+
+sol = MultiSourceFloodFill()
+print(sol.colorGrid(3, 3, [[0, 0, 1], [2, 2, 2]]))
