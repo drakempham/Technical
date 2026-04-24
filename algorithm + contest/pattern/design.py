@@ -19,6 +19,7 @@
 #         :rtype: int
 #         """
 
+from random import randint
 from typing import List
 from collections import defaultdict
 
@@ -120,3 +121,31 @@ wordsDict = ["practice", "makes", "perfect", "coding", "makes"]
 sol = WordDistance(wordsDict)
 print(sol.shortest("coding", "practice"))
 print(sol.shortest("makes", "coding"))
+
+# 14:29
+
+
+class ShuffleAnArray:
+    def __init__(self, nums: List[int]):
+        self.origin = nums[:]
+
+    def reset(self) -> List[int]:
+        return self.origin[:]
+
+    def shuffle(self) -> List[int]:
+        n = len(self.origin)
+        copy_arr = self.origin[:]
+        for i in range(0, n-1):
+            j = randint(i, n-1)
+            copy_arr[i], copy_arr[j] = copy_arr[j], copy_arr[i]
+        return copy_arr
+
+arr = [1,2,3]
+sol = ShuffleAnArray(arr)
+print(sol.reset())
+print(sol.shuffle())
+print(sol.reset())
+res = sol.reset()
+res[0] = 9999
+print(sol.origin)
+
