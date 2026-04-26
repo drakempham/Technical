@@ -72,3 +72,30 @@ class SuperUglyNumber:
 
 sol = SuperUglyNumber()
 print(sol.nthSuperUglyNumber(5, [2, 7, 13]))
+
+
+class LargestDivisibleSubset:
+    def largestDivisibleSubset(self, nums: List[int]) -> List[int]:
+        nums.sort()
+        n = len(nums)
+        dp = [1] * n
+        parent = [-1] * n
+        ans_idx = 0
+        for i in range(1, n):
+            for j in range(0, i):
+                if nums[i] % nums[j] == 0:
+                    dp[i] = max(dp[i], dp[j] + 1)
+                    if dp[i] == dp[j] + 1:
+                        parent[i] = j
+            # chot ans của dp[i] o buoc cuoi
+            if dp[i] > dp[ans_idx]:
+                ans_idx = i
+        result = []
+        while ans_idx != -1:
+            result.append(nums[ans_idx])
+            ans_idx = parent[ans_idx]
+        return result[::-1]
+
+
+sol = LargestDivisibleSubset()
+print(sol.largestDivisibleSubset([1, 2, 3]))

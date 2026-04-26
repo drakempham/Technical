@@ -82,3 +82,19 @@ class MaximumProductOfDistinctWord:
 
 sol = MaximumProductOfDistinctWord()
 print(sol.maxProduct(["abc", "ab", "cd"]))
+
+# a xor b
+
+
+class SumOfTwoIntegers:
+    def getSum(self, a: int, b: int) -> int:
+        mask = (1 << 32) - 1
+        max_int = (1 << 31) - 1
+        while b != 0:
+            # lien tuong den phep cong
+            a, b = mask & (a ^ b), mask & ((a & b) << 1)
+        return a if a <= max_int else ~(a ^ mask)
+
+
+sol = SumOfTwoIntegers()
+print(sol.getSum(-1, 1))

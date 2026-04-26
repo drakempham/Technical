@@ -4,7 +4,7 @@ Use this file as the default instruction set whenever I ask you to generate a Le
 
 ## Goal
 
-Generate a polished Markdown post that is ready to publish as a LeetCode solution write-up.
+Generate a polished Markdown file in same directory that is ready to publish as a LeetCode solution write-up.
 
 The post should:
 
@@ -125,20 +125,17 @@ Do not add a second approach just to make the answer longer.
 ## Title Style
 
 The title should be:
-
+- prioritizing beginner-friendly and easy-to-understand phrasing
 - specific
 - easy to read
 - mildly catchy
 - not clickbait
 - optionally styled as short highlight segments separated by `||`
-- allowed to include language, pattern, technique, and difficulty/readability cues
+- allowed to include pattern, technique, and difficulty/readability cues (DO NOT include language cues like Python, Java, etc.)
 
 Good examples:
 
-- `# Clean Bitmask Solution for Maximum Product of Word Lengths 🚀`
-- `# Two-Pointer Greedy Solution Explained Clearly ✨`
-- `# Prefix Sum + Hash Map Pattern for Subarray Count 📌`
-- `# Python 🔥 || Greedy Approach 🧠 || One-Pass Scan 🚀 || Beginner Friendly ⛳️`
+- `# Beginner Friendly ⛳️ || Greedy Approach 🧠 || One-Pass Scan 🚀 ||Clean Bitmask Solution for Maximum Product of Word Lengths 🚀`
 
 Avoid:
 
@@ -146,12 +143,6 @@ Avoid:
 - too many emojis
 - all caps
 - exaggerated claims like `BEST EVER`
-
-Preferred title formula when it fits naturally:
-
-- `# [Language1] [emoji] [Language2] [emoji] || [Pattern] [emoji] || [Core Technique] [emoji] || [Problem Name or Readability Hook] [emoji]`
-
-For example: `# Python 🐍 Java ☕ || Counting 🔢 || Furthest Distance From Origin 🚀`
 
 ## Tone
 

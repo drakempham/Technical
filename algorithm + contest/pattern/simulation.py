@@ -1,3 +1,4 @@
+from collections import defaultdict
 from typing import List
 
 
@@ -63,3 +64,37 @@ sol = NextPermutation()
 nums = [1, 3, 2]
 sol.nextPermutation(nums)
 print(nums)
+
+
+class SortVowelsByFrequency:
+    def sortVowels(self, s: str) -> str:
+        vowels = set('aeiou')
+        freq = defaultdict(int) # truyen ham vo luc khoi tao vi du lambda: 5
+        first_occ = {}
+
+        for i, c in enumerate(s):
+            if c in vowels:
+                freq[c] += 1
+                if c not in first_occ:
+                    first_occ[c] = i
+
+        order = sorted(freq.keys(), key=lambda c: (-freq[c], first_occ[c]))
+        replace_ch = [ch for ch in order for _ in range(freq[ch])]
+        res = []
+        i = 0
+        for c in s:
+            if c not in vowels:
+                res.append(c)
+            else:
+                res.append(replace_ch[i])
+                i += 1
+        return "".join(res)
+
+
+sol = SortVowelsByFrequency()
+print(sol.sortVowels("leetcode"))
+
+
+print(int())
+print(str(str()))
+print(list())
