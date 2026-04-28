@@ -131,11 +131,11 @@ The title should be:
 - mildly catchy
 - not clickbait
 - optionally styled as short highlight segments separated by `||`
-- allowed to include pattern, technique, and difficulty/readability cues (DO NOT include language cues like Python, Java, etc.)
-
+-always start with Beginner Friendly ⛳️
+- one emoji at beginner friendly is enough
 Good examples:
 
-- `# Beginner Friendly ⛳️ || Greedy Approach 🧠 || One-Pass Scan 🚀 ||Clean Bitmask Solution for Maximum Product of Word Lengths 🚀`
+- `# Beginner Friendly ⛳️ || Python & Java || Dynamic Programming  || Prefix Matching 
 
 Avoid:
 
@@ -180,6 +180,8 @@ If I provide code, improve naming/formatting when useful, but preserve the algor
 
 For the explanation:
 
+- be beginner friendly, aim to let new beginner understand the core idea easily
+- tone should not like AI robotic
 - focus on the core invariant or insight
 - explain why each major step exists
 - connect the idea to the pattern being used
@@ -258,6 +260,19 @@ Before finalizing, ensure the post:
 When generating from this file, assume the instruction below:
 
 > Write a LeetCode-ready solution post in Markdown based on the provided problem, idea, or code. Use clean English, a strong title (including both Python 🐍 and Java ☕ in the language segment), beginner-friendly intuition, a clear approach section, correct complexity, both Python and Java implementations (labeled separately), and a short correctness explanation. Include at most 2 approaches only if they add real value. Make the final result directly postable on LeetCode.
+
+## Similar problem
+
+Find some similar problem with same pattern from leetcode and put title in here.
+
+Use this format:
+
+```
+Some example problems with same pattern
+- 198. House Robber 🧠
+- 213. House Robber II 🧠
+- 740. Delete and Earn 🧠
+```
 
 ## Preferred Closing
 
