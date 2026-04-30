@@ -57,7 +57,7 @@ The generated post must:
 Always use this structure unless I explicitly ask for a different format.
 
 ````md
-# [Catchy, readable title with 1-2 relevant emojis]
+# [Creative, readable title with the main pattern and optional performance stats]
 
 ## Intuition
 
@@ -65,7 +65,7 @@ Always use this structure unless I explicitly ask for a different format.
 
 ## Why This Works
 
-[Beginer-friendly correctness explanation.]
+[Beginner-friendly correctness explanation.]
 
 ## Approach
 
@@ -81,14 +81,16 @@ Always use this structure unless I explicitly ask for a different format.
 ## Code
 
 **Python:**
+
 ```python
 [clean Python solution code]
 ```
 
-**Java:**
-```java
-[equivalent Java solution code]
-```
+## Similar Problem
+
+Some example problems with same pattern
+
+- [problem number]. [problem title] 🧠
 
 ---
 
@@ -125,17 +127,25 @@ Do not add a second approach just to make the answer longer.
 ## Title Style
 
 The title should be:
+
 - prioritizing beginner-friendly and easy-to-understand phrasing
 - specific
 - easy to read
 - mildly catchy
 - not clickbait
 - optionally styled as short highlight segments separated by `||`
--always start with Beginner Friendly ⛳️
-- one emoji at beginner friendly is enough
+- not fixed to one template; make it feel fresh for each solution
+- allowed to be funny, playful, or slightly random if it still clearly describes the solution
+- include the main pattern, such as `Grid Dynamic Programming`, `Heap`, `Sliding Window`, or `Prefix Matching`
+- include runtime or memory stats only when I provide them
+- if I provide stats, put them naturally in the title, such as `O(n*k), beats 90% memory`
+- `Beginner Friendly ⛳️` can appear anywhere in the title, not necessarily at the beginning
+
 Good examples:
 
-- `# Beginner Friendly ⛳️ || Python & Java || Dynamic Programming  || Prefix Matching 
+- `# O(n*k), beats 90% memory || Beginner Friendly ⛳️ || Grid Dynamic Programming || Budget State`
+- `# Tiny Heap, Big Answer || Beginner Friendly ⛳️ || Kth Largest Element`
+- `# The Prefix Puzzle Solver || Beginner Friendly ⛳️ || Dynamic Programming`
 
 Avoid:
 
@@ -164,15 +174,14 @@ Avoid:
 
 Code must:
 
-- always include **both Python and Java** implementations by default
-- use clean naming consistent between the two languages
+- use clean, consistent naming throughout the code
 - be formatted for readability
 - match the explained approach
 - avoid unused variables or dead code
 - avoid unnecessary comments inside code
-- use idiomatic style for each language (e.g. `Math.abs()` in Java, `abs()` in Python)
+- use idiomatic Python style (`abs()`, list comprehensions when readable, clear variable names)
 
-Label each block clearly with `**Python:**` and `**Java:**` before the code fence.
+Label each block clearly with `**Python:**` before the code fence.
 
 If I provide code, improve naming/formatting when useful, but preserve the algorithm unless I ask for optimization.
 
@@ -180,8 +189,8 @@ If I provide code, improve naming/formatting when useful, but preserve the algor
 
 For the explanation:
 
-- be beginner friendly, aim to let new beginner understand the core idea easily
-- tone should not like AI robotic
+- be beginner friendly, aiming to help beginners understand the core idea easily
+- avoid a robotic or overly generic tone
 - focus on the core invariant or insight
 - explain why each major step exists
 - connect the idea to the pattern being used
@@ -259,11 +268,11 @@ Before finalizing, ensure the post:
 
 When generating from this file, assume the instruction below:
 
-> Write a LeetCode-ready solution post in Markdown based on the provided problem, idea, or code. Use clean English, a strong title (including both Python 🐍 and Java ☕ in the language segment), beginner-friendly intuition, a clear approach section, correct complexity, both Python and Java implementations (labeled separately), and a short correctness explanation. Include at most 2 approaches only if they add real value. Make the final result directly postable on LeetCode.
+> Write a LeetCode-ready solution post in Markdown based on the provided problem, idea, or code. Use clean English, a creative and readable title that includes the main pattern and optional runtime or memory stats when I provide them. The title does not need to follow a fixed template, but it should still be clear, beginner-friendly, and not clickbait. Include beginner-friendly intuition, a clear approach section, correct complexity, a clean Python implementation, and a short correctness explanation. Include at most 2 approaches only if they add real value. Make the final result directly postable on LeetCode.
 
-## Similar problem
+## Similar Problem
 
-Find some similar problem with same pattern from leetcode and put title in here.
+Find some similar problems with the same pattern from LeetCode and put their titles here.
 
 Use this format:
 
@@ -280,16 +289,12 @@ Use exactly this closing unless I ask for a different one:
 
 `⭐ If this explanation helped you, please upvote 👍 — it motivates me to keep sharing clean and beginner-friendly solutions 🚀`.
 
+<!--
 ## Optional Add-ons
 
 Only include these if I explicitly ask:
-
-- dry run
-- alternative language
-- follow-up optimization
-- common mistakes section
-- interview tips
-- visual intuition
+- A question to discuss at the end, with this title: "💡 Thought for 1 min:" - a question not in markdown style
+-->
 
 ## Priority Order
 

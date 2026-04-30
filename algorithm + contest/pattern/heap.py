@@ -9,6 +9,10 @@ class KthLargest:
         self.pq = nums
 
         heapq.heapify(self.pq)
+        # if we want max-heap
+        # self.pq = [-x for x in nums]
+        # heapq.heapify(self.pq)
+        # and when return: - self.pq[0]
 
     def add(self, val: int) -> int:
         heapq.heappush(self.pq, val)
