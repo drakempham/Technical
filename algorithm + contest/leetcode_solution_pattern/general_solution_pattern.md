@@ -55,6 +55,7 @@ The generated post must:
 ## Output Structure
 
 Always use this structure unless I explicitly ask for a different format.
+dp[1][1]
 
 ````md
 # [Creative, readable title with the main pattern and optional performance stats]
@@ -100,6 +101,14 @@ Some example problems with same pattern
 ## Multi-Approach Rule
 
 If the problem naturally has multiple useful approaches, generate up to 2 approaches.
+
+If my provided code includes multiple approaches, include them in the post when they are meaningful. This includes:
+
+- commented brute force code followed by optimized code
+- two working implementations with different complexity
+- code comments that explicitly describe an alternative approach
+
+In this case, do not hide the earlier approach only inside the intuition. Write it as `Approach 1`, then explain the improved version as `Approach 2`.
 
 Use this format:
 

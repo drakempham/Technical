@@ -19,6 +19,7 @@
 #         :rtype: int
 #         """
 
+from numpy import random
 from random import randint
 from typing import List
 from collections import defaultdict
@@ -140,7 +141,8 @@ class ShuffleAnArray:
             copy_arr[i], copy_arr[j] = copy_arr[j], copy_arr[i]
         return copy_arr
 
-arr = [1,2,3]
+
+arr = [1, 2, 3]
 sol = ShuffleAnArray(arr)
 print(sol.reset())
 print(sol.shuffle())
@@ -149,3 +151,41 @@ res = sol.reset()
 res[0] = 9999
 print(sol.origin)
 
+
+class RandomizedSet:
+
+    def __init__(self):
+        self.items = {}
+        self.arr = []
+
+    def insert(self, val: int) -> bool:
+        if val not in self.items:
+            self.arr.append(val)
+            self.items[val] = len(self.arr) - 1
+            return True
+        return False
+
+    def remove(self, val: int) -> bool:
+        if val not in self.items:
+            return False
+        pos = self.items[val]
+        last = self.arr[-1]
+
+        self.arr[pos] = last
+        self.items[last] = pos
+        self.arr.pop()
+        del self.items[val]
+        return True
+
+    def getRandom(self) -> int:
+        return random.choice(self.arr)
+
+
+sol = RandomizedSet()
+print(sol.insert(1))
+print(sol.insert(3))
+print(sol.insert(3))
+print(sol.remove(1))
+print(sol.getRandom())
+
+    
