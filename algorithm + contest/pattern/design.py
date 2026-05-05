@@ -188,4 +188,12 @@ print(sol.insert(3))
 print(sol.remove(1))
 print(sol.getRandom())
 
-    
+class Solution:
+    def fib(self, n: int) -> int:
+        a, b = 0, 1
+        for i in range(n):
+            a, b = b, a + b
+        return a    
+
+sol = Solution()
+print(sol.fib(3))

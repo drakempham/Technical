@@ -64,10 +64,6 @@ dp[1][1]
 
 [Explain the key insight in a simple way.]
 
-## Why This Works
-
-[Beginner-friendly correctness explanation.]
-
 ## Approach
 
 - **Step 1:** ...
@@ -118,7 +114,6 @@ Use this format:
 For each approach, include:
 
 - Intuition
-- Why This Works
 - Approach
 - Complexity
 - Code
@@ -210,16 +205,6 @@ Do not:
 - over-explain obvious syntax
 - restate the code line by line
 - dump textbook theory unrelated to the solution
-
-## Correctness Rule
-
-Include a short `Why This Works` section.
-
-This section should:
-
-- explain the invariant, greedy choice, DP state meaning, or proof idea
-- stay short
-- sound natural
 
 ## Complexity Rule
 

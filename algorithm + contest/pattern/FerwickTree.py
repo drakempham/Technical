@@ -4,11 +4,14 @@ from typing import List
 class FenwickTree:
     def __init__(self, n):
         self.ft = [0] * (n + 1)
+        self.arr = [0] * (n+1)
         self.n = n
 
-    def build_from_list(self, arr):
+    @classmethod
+    def build_from_list(cls, arr):
         n = len(arr)
-        ft = self.__class__(n)
+        ft = cls(n)
+        ft.arr = [0] + arr[:]
         for i in range(1, n+1):
             ft.ft[i] += arr[i-1]
             parent = i + (i & (-i))
@@ -17,12 +20,13 @@ class FenwickTree:
         return ft
 
     def update(self, i, num):
-        self.ft[i] += num
+        delta = num - self.arr[i]
+        self.arr[i] = num
         while i <= self.n:
             i += i & (-i)
             if i > self.n:
                 break
-            self.ft[i] += num
+            self.ft[i] += delta
         return self.ft[i]
 
     def query(self, i):
@@ -43,6 +47,12 @@ ft = sol.build_from_list(arr)
 print(ft.query(5))
 print(ft.query_range(2, 5))
 
+
+
+# LSB (lowest set bit) 
+# update i = i + (i&-i)
+# query i = i - (i&-i)
+# Moi index i quan ly do dai dung bang (i & -i)
 
 class RansumQueryMutable:
     def __init__(self, nums: List[int]):
@@ -65,7 +75,7 @@ class RansumQueryMutable:
         old_val = self.nums[index]
         self.nums[index] = val
         delta = val - old_val
-        while curr_pos < self.n:
+        while curr_pos <= self.n:
             self.ft[curr_pos] += delta
             curr_pos += (curr_pos & -curr_pos)
 

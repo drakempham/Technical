@@ -47,3 +47,34 @@ class MinimumOperationsToMakeArrayNonDescending:
                 tax += p - q
 
         return tax
+
+
+class Solution:
+    def rotateString(self, s: str, goal: str) -> bool:
+        # n= len(s)
+
+        # for move in range(n):
+        #     temp = s[move:] + s[:move]
+
+        #     if temp == goal:
+        #         return True
+        # return False
+
+        return len(goal) == len(s) and s in (goal + goal)
+
+
+class Solution:
+    def reorderLogFiles(self, logs: List[str]) -> List[str]:
+        letter_logs = []
+        digits_logs = []
+
+        for log in logs:
+            identifier, content = log.split(" ", maxsplit=1)
+            if content[0].isalpha():
+                letter_logs.append((content, identifier, log))
+            else:
+                digits_logs.append(log)
+
+        letter_logs.sort()
+
+        return [log for _, _, log in letter_logs] + digits_logs
