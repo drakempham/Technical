@@ -1,3 +1,4 @@
+from collections import defaultdict
 from typing import List
 
 
@@ -50,3 +51,36 @@ class MaximumDistanceBetweenAPairOfValues:
 sol = MaximumDistanceBetweenAPairOfValues()
 print(sol.maxDistance([55, 30, 5, 4, 2], [100, 20, 10, 10, 5]))
 print(sol.maxDistance([100, 99, 2], [50, 49, 48]))
+
+
+class Solution:
+    def maximumSubarraySum(self, nums: List[int], k: int) -> int:
+        left = 0
+        freq_counter = defaultdict(int)
+        n = len(nums)
+        curr_sum = 0
+        ans = 0
+
+        for right in range(n):
+            curr_num = nums[right]
+
+            freq_counter[curr_num] += 1
+            curr_sum += curr_num
+            
+            if right - left + 1 > k:
+                left_num = nums[left]
+
+                freq_counter[left_num] -= 1
+                if freq_counter[left_num] == 0:
+                    del freq_counter[left_num]
+                curr_sum -= left_num
+                left += 1
+        
+            if right - left + 1 == k and len(freq_counter) == k:
+                ans = max (ans, curr_sum)
+
+        return ans
+
+sol = Solution()
+print(sol.maximumSubarraySum([1,5,4,2,9,9,9], 3)) # 4 
+print(sol.maximumSubarraySum([4,4,4], 3))

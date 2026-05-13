@@ -1,3 +1,5 @@
+from collections import defaultdict
+from typing import List
 class IntegerBreak:
     def integerBreak(self, n: int) -> int:
         if n == 2:
@@ -78,3 +80,33 @@ class Solution:
         letter_logs.sort()
 
         return [log for _, _, log in letter_logs] + digits_logs
+
+
+class Solution:
+    def countTheNumberOfKTreeSubsets(self, nums: List[int], k: int) -> int:
+        group_remainer= defaultdict(list)
+        for num in nums:
+            group_remainer[num%k].append(num)
+        for groupIdx in group_remainer:
+            group_remainer[groupIdx].sort()
+        def subsets(idx: int):
+            n = len(group_remainer[idx])
+            dp = [0] * (n+1)
+            dp[0] = 1
+            dp[1] = 2
+
+            for i in range(2, n+1):
+                if group_remainer[idx][i-1] - group_remainer[idx][i-2] == k:
+                    dp[i] = dp[i-1] + dp[i-2]
+                else:
+                    dp[i] = 2*dp[i-1]
+            return dp[n]
+
+        total_subset = 1
+        for i in range(k):
+            if group_remainer[i]:
+                total_subset *= subsets(i)
+        return total_subset
+
+sol = Solution()
+print(f"currSol + {sol.countTheNumberOfKTreeSubsets([2,3,5,8], 5)}")
