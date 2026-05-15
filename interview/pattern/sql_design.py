@@ -1,3 +1,4 @@
+from os import name
 from typing import List
 class SQL:
     def __init__(self, names: List[str], columns: List[int]):
@@ -27,15 +28,15 @@ class SQL:
       if name not in self.table:
           return
 
-        if rowId not in self.table[name]["rows"]:
-    return
+      if rowId not in self.table[name]["rows"]:
+        return
       
       del self.table[name]["rows"][rowId]
     
     def sel(self, name: str, rowId: int, columnId: int):
       if name not in self.table:
           return "<null>"
-      if rowId >= self.table[name]["next_id"] or columnId > self.table[name]["columns"]:
+      if rowId not in self.table[name]["rows"] or columnId <=0 or columnId > self.table[name]["columns"]:
         return "<null>"
       return self.table[name]["rows"][rowId][columnId-1]
     

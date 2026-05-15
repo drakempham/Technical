@@ -33,3 +33,35 @@ sol.add(9)
 print(sol.pq)
 sol.add(4)
 print(sol.pq)
+
+
+# k so nho hon ben trai, k so nho hon ben phai
+class Solution:
+    def kBigIndices(self, nums: List[int], k: int) -> int:
+        n = len(nums)
+        leftIndices = [False] * n
+        rightIndices = [False] * n
+        heap = []
+        for i in range(n):
+            if len(heap) == k and heap[0] > -nums[i]: # i lon hon k element heap
+                leftIndices[i] = True
+
+            heapq.heappush(heap, -nums[i])
+
+            if len(heap) > k:
+                heapq.heappop(heap)
+
+        heap = []
+        for i in range(n-1, -1, -1):
+            if len(heap) == k and heap[0] > -nums[i]: # i lon hon k element heap
+                rightIndices[i] = True
+
+            heapq.heappush(heap, -nums[i])
+
+            if len(heap) > k:
+                heapq.heappop(heap)
+        
+        return sum(1 if leftIndices[i] == True and rightIndices[i] == True else 0 for i in range(n))
+
+sol = Solution()
+print(sol.kBigIndices([3,8,4,2,5,3,8,6],1))
