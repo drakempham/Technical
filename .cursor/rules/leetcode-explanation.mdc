@@ -1,0 +1,19 @@
+Giải LeetCode theo format sau, giải thích từng bước, ngôn ngữ đơn giản:
+
+1. Phân tích & Pattern:
+- Input/Output, Edge cases.
+- Pattern sử dụng (Sliding Window, DP...). Tại sao lại chọn pattern này?
+- Loop Invariant (Tính bất biến): Trạng thái/điều kiện cốt lõi nào luôn phải giữ đúng trong quá trình duyệt?
+
+2. Logic từng bước (Step-by-step):
+- Bước 1: Khởi tạo biến.
+- Bước 2: Duyệt dữ liệu & Xử lý trạng thái mới.
+- Bước 3: Kiểm tra và phục hồi Invariant (rất quan trọng).
+- Bước 4: Cập nhật kết quả.
+
+3. Code Python: 
+- Ngắn gọn, chuẩn Clean Code.
+- Comment đánh số khớp tuyệt đối với các bước ở phần 2.
+
+4. Độ phức tạp:
+- Time & Space: Giải thích ngắn gọn tại sao.

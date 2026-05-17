@@ -125,3 +125,120 @@ class MultiSourceFloodFill:
 
 sol = MultiSourceFloodFill()
 print(sol.colorGrid(3, 3, [[0, 0, 1], [2, 2, 2]]))
+
+from collections import defaultdict
+from typing import List
+from collections import deque
+class Solution:
+    # O(N*M2)
+    # def ladderLength(self, beginWord: str, endWord: str, wordList: List[str]) -> int:
+    #     if endWord not in word_set:
+    #         return 0
+        
+    #     queue = deque([beginWord])
+    #     change = 1
+    #     visited = set()
+    #     visited.add(beginWord)
+    #     word_set = set(wordList)
+
+    #     while queue: # N (len of list)
+    #         curr_len =  len(queue)
+    #         for _ in range(curr_len):
+    #             curr_word = queue.popleft()
+    #             if curr_word == endWord:
+    #                 return change
+    #             for i in range(len(curr_word)): # M ( len of word)
+    #                 for j in range(0, 26): # 26
+    #                     next_c = chr(ord('a') + j)
+    #                     next_word = curr_word[:i] + next_c + curr_word[i+1:] # M
+    #                     if next_word in word_set and next_word not in visited:
+    #                         visited.add(next_word)
+    #                         queue.append(next_word)
+    #         change += 1
+    #     return 0
+    
+    def ladderLength(self, beginWord: str, endWord: str, wordList: List[str]) -> int:
+        if endWord not in wordList:
+            return []
+        n = len(endWord)
+
+        pattern_to_word = defaultdict(list)
+        for word in wordList:
+            for i in range(n):
+                pattern = word[:i] + '*'+word[i+1:]
+                pattern_to_word[pattern].append(word)
+        
+        visited = set([beginWord])
+        queue = deque([(beginWord, 1)])
+        while queue:
+            curr_word, curr_ops = queue.popleft()
+            for i in range(n):
+                pattern = curr_word[:i] + '*' + curr_word[i+1:]
+
+                for word in pattern_to_word[pattern]:
+
+                    if word == endWord:
+                        return curr_ops + 1
+
+                    if word not in visited:
+                        queue.append((word, curr_ops + 1))
+                        visited.add(word)
+                
+                if pattern_to_word[pattern]:
+                    del pattern_to_word[pattern]
+        return 0
+
+
+
+
+
+
+
+    def findLadders(self, beginWord: str, endWord: str, wordList: List[str]) -> List[List[str]]:
+        if endWord not in wordList:
+            return []
+        n = len(endWord)
+
+        pattern_to_word = defaultdict(list)
+        for word in wordList:
+            for i in range(n):
+                pattern = word[:i] + '*'+word[i+1:]
+                pattern_to_word[pattern].append(word)
+        
+        queue = deque([(beginWord)])
+        dist = {beginWord: 1}
+        parent_node= defaultdict(list)
+
+        while queue:
+            curr_word = queue.popleft()
+            for i in range(n):
+                pattern = curr_word[:i] + '*' + curr_word[i+1:]
+
+                for adj in pattern_to_word[pattern]:
+
+                    if adj not in dist:
+                        dist[adj] = dist[curr_word] + 1
+                        parent_node[adj].append(curr_word)
+                        queue.append(adj)
+                    else: # check another path
+                        if dist[adj] == dist[curr_word] + 1:
+                            parent_node[adj].append(curr_word)
+        res = []
+        if endWord in parent_node:
+            def dfs(word: str, path: List[str]):
+                if word == beginWord:
+                    res.append(path[::-1])
+                    return
+                
+                for parent in parent_node[word]:
+                    path.append(parent)
+                    dfs(parent, path)
+                    path.pop()
+            dfs(endWord, [endWord])
+        return res
+
+
+
+sol = Solution()
+# print(sol.ladderLength("hit", "cog", ["hot","dot","dog","lot","log","cog"]))
+print(sol.findLadders("hit", "cog", ["hot","dot","dog","lot","log","cog"]))

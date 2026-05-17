@@ -110,3 +110,32 @@ class Solution:
 
 sol = Solution()
 print(f"currSol + {sol.countTheNumberOfKTreeSubsets([2,3,5,8], 5)}")
+
+from typing import List
+class Solution:
+    # def wiggleSort(self, nums: List[int]) -> None:
+    #     sorted_nums = sorted(nums)
+    #     n = len(nums)
+    #     j = 0
+    #     for i in range(0, n-1, 2):
+    #         nums[i] = sorted_nums[j]
+    #         nums[i+1] = sorted_nums[n-1-j]
+    #         j += 1
+    #     if n % 2 ==1:
+    #         nums[n-1] = sorted_nums[n//2]
+    #     return nums
+    def wiggleSort(self, nums: List[int]):
+        isSmaller = True
+        for i in range(len(nums)-1):
+            if isSmaller:
+                if nums[i] > nums[i+1]:
+                    nums[i] , nums[i+1] = nums[i+1], nums[i]
+                isSmaller = not isSmaller
+            else:
+                if nums[i] <  nums[i+1]:
+                    nums[i] , nums[i+1] = nums[i+1], nums[i]
+                isSmaller = not isSmaller
+
+sol = Solution()
+print(sol.wiggleSort([3,5,2,1,6,4]))
+print(sol.wiggleSort([1,2,3]))
