@@ -135,3 +135,56 @@ for i in range(t):
     else:
         print(len(ans))
         print(*ans)
+
+
+
+## Jump la bai toan dien hinh cua greedy
+from typing import List
+class Solution:
+    # forward greedy
+    def canJump(self, nums: List[int]) -> bool:
+        farthest = 0
+        n = len(nums)
+        for i in range(n):
+            if i > farthest:
+                return False
+            farthest = max (farthest, i + nums[i])
+            if i >= n - 1 :
+                return True
+        return False
+
+    #backward greedy
+    # def canJump(self, nums: List[int]) -> bool:
+    #     n = len(nums)
+    #     lastPos = n - 1
+    #     for i in range(n-2, -1, -1):
+    #         if i + nums[i] >= lastPos:
+    #             lastPos = i
+    #     return lastPos == 0
+
+sol = Solution()
+print(sol.canJump([1,3,1,1,2]))
+print(sol.canJump([2,1,0,3]))
+
+
+from typing import List
+class Solution:
+    # forward greedy
+    def canJump(self, nums: List[int]) -> bool:
+        farthest = 0
+        n = len(nums)
+        curr_far = 0
+        jump = 0
+        for i in range(n):
+            if i > curr_far:
+                jump += 1
+                curr_far = farthest
+            farthest = max(farthest, i + nums[i])
+            if farthest >= n-1:
+                return jump if curr_far == farthest else jump + 1
+        return jump
+
+sol = Solution()
+print(sol.canJump([1,3,1,1,2]))
+print(sol.canJump([2,3,0,1,4]))
+

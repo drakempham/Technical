@@ -242,3 +242,33 @@ class Solution:
 sol = Solution()
 # print(sol.ladderLength("hit", "cog", ["hot","dot","dog","lot","log","cog"]))
 print(sol.findLadders("hit", "cog", ["hot","dot","dog","lot","log","cog"]))
+
+
+from collections import deque
+from collections import defaultdict
+from typing import List
+class Solution:
+    # tim con duong ngan nhat tren canh ko trong so -> bfs
+    def minJumps(self, arr: List[int]) -> int:
+        val_to_pos = defaultdict(list)
+        for idx, num in enumerate(arr):
+            val_to_pos[num].append(idx)
+        n = len(arr)
+        queue = deque([0])
+        dist = {0: 0}
+        while queue:
+            curr_pos = queue.popleft()
+            if curr_pos == n-1:
+                return dist[curr_pos]
+            for idx in (curr_pos -1, curr_pos + 1):
+                if 0<=idx<n and idx not in dist.keys():
+                    queue.append(idx)
+                    dist[idx] = dist[curr_pos] + 1
+            for idx in val_to_pos[arr[curr_pos]]:
+                if 0<=idx<n and idx not in dist.keys():
+                    queue.append(idx)
+                    dist[idx] = dist[curr_pos] + 1
+        return -1
+
+sol = Solution()
+print(sol.minJumps([100,-23,-23,404,100,23,23,23,3,404]))

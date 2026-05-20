@@ -1,37 +1,63 @@
-# chalkboard 
-
 import sys
-import heapq
 
-def solve():
-  input = sys.stdin.read().split()
-  
-  x = int(input[0])
-  q = int(input[1])
-  ans = []
+input = sys.stdin.readline
 
-  max_heap = [-x]
-  min_heap = []
-  i = 2
-  for _ in range(q):
-    a = int(input[i])
-    b = int(input[i+1])
+def solve(n, a, b):
+    total_valid_segments = 0
+    a = [0] + a
+    b = [0] + b
 
-    i += 2
+    upper_bound = n + 1
 
-    for k in (a,b):
-      if -k >= max_heap[0]:
-        heapq.heappush(max_heap, -k)
-      else:
-        heapq.heappush(min_heap, k)
+    dp = [upper_bound] * (n + 2)
 
-    # max_heap = min_heap + 1
-    while len(max_heap) > len(min_heap) + 1:
-      heapq.heappush(min_heap, -heapq.heappop(max_heap))
-    while len(min_heap) >= len(max_heap):
-      heapq.heappush(max_heap, -heapq.heappop(min_heap))
-    ans.append(-max_heap[0])
-  print("\n".join(map(str, ans)))
+    firstA = [upper_bound] * (n + 2)
+    firstB = [upper_bound] * (n + 2)
+
+
+    for i in range(n, 0, -1):
+
+        firstA[a[i]] = i
+        firstB[b[i]] = i
+
+        if a[i] == b[i]:
+            k = a[i]
+
+            min_broadcast_day = min(firstA[k + 1], firstB[k + 1])
+
+            if min_broadcast_day == upper_bound:
+
+                dp[i] = upper_bound
+
+            elif a[min_broadcast_day] == k + 1 and b[min_broadcast_day] == k + 1:
+
+                dp[i] = dp[min_broadcast_day]
+
+            else:
+
+                dp[i] = min_broadcast_day
+
+        min_broadcast_day = min(firstA[1], firstB[1])
+
+        if a[min_broadcast_day] == 1 and b[min_broadcast_day] == 1:
+          limit = dp[min_broadcast_day]
+
+        elif min_broadcast_day == upper_bound:
+            limit = upper_bound
+        else:
+              limit = min_broadcast_day
+
+        total_valid_segments += limit - i
+
+    return total_valid_segments
+
 
 if __name__ == "__main__":
-  solve()
+    t = int(input())
+
+    for _ in range(t):
+        n = int(input())
+        a = list(map(int, input().split()))
+        b = list(map(int, input().split()))
+
+        print(solve(n, a, b))
